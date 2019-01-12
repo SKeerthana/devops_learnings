@@ -1,0 +1,8 @@
+aws ec2 create-volume --size 500 --region us-east-1 --availability-zone us-east-1b --volume-type gp2 --tag-specifications 'ResourceType=volume,Tags=[{Key=Name,Value=<tag>}]’
+
+aws ec2 describe-instances --filters "Name=instance-type,Values=m5.xlarge"
+
+aws ec2 attach-volume --volume-id <volume_id> --instance-id <instance_id> --device /dev/sdi
+
+# total volume size in the region
+aws ec2 describe-volumes --region us-east-1 --query 'sum(Volumes[].Size)'
