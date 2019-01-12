@@ -1,0 +1,53 @@
+syntax on "sytax highlighting
+set fileencodings=utf-8
+set tabstop=4
+set hlsearch "enable highlight search
+" set autoindent "automatic indenting
+filetype plugin indent on
+colorscheme desert
+
+" using vim.plug for plugin management
+call plug#begin('~/.vim/plugged')
+" git clone https://github.com/scrooloose/nerdtree.git into ~/.vim/bundle and run :PlugInstall from vim
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "install for :Ag search (https://github.com/junegunn/fzf.vim)
+Plug 'junegunn/fzf.vim'
+Plug 'flazz/vim-colorschemes'
+" Plug 'airblade/vim-gitgutter' "shows a git diff in the gutter
+Plug 'junegunn/limelight.vim' "hyper focus writing
+Plug 'davidhalter/jedi-vim' "auto completion for vim
+call plug#end()
+
+" open nerdtree when vim starts
+" autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1 "open a NERDTree automatically when vim starts up if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1 "open NERDTree automatically when vim starts up on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "close vim if the only window left open is a NERDTree
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+" https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
+let g:NERDTreeNodeDelimiter = "\u00a0"
+" width of the directory explorer
+let g:netrw_winsize = 25
+
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+
+"File navigation and search mappings
+map <C-n> :NERDTreeToggle<CR>
+map <C-k> :NERDTreeFind<CR>
+map <C-o> :call FZFOpen(':Files')<CR>
+map <C-e> :call FZFOpen(':Buffers')<CR>
+map <C-f> :call FZFOpen(':Ag')<CR>
+
+"Git mappings
+nmap <Leader>g :GitGutterSignsToggle<CR>
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+nmap <Leader>hv <Plug>GitGutterPreviewHunk
