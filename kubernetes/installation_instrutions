@@ -1,0 +1,5 @@
+To install helm:
+
+brew install kubernetes-helm
+
+helm init
