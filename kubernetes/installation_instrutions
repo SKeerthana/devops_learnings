@@ -1,5 +1,10 @@
-To install helm:
+To install minikube:
+brew cask install minikube
 
+To be able to work with the docker daemon on your mac:
+eval $(minikube docker-env)
+
+To install helm:
 brew install kubernetes-helm
 
 helm init

@@ -17,8 +17,10 @@ kubectl expose <type> <existing_name> --port=<port> --name=<name>
 
 kubectl scale <type> <name> [--replicas=<number>]
 
+kubectl autoscale deployment.v1.apps/<deployment_name> --min=<> --max=<> --cpu-percent=<>
+
 ### other commands:
-autoscale, label, annotate, set
+label, annotate, set
 
 # Imperative object configuration:
 
