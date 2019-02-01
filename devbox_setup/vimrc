@@ -10,6 +10,7 @@ colorscheme desert
 call plug#begin('~/.vim/plugged')
 " git clone https://github.com/scrooloose/nerdtree.git into ~/.vim/bundle and run :PlugInstall from vim
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Run brew install the_silver_searcher
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "install for :Ag search (https://github.com/junegunn/fzf.vim)
 Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
