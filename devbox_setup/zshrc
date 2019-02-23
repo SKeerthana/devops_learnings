@@ -1,0 +1,6 @@
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/keethas/.sdkman"
+[[ -s "/Users/keethas/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/keethas/.sdkman/bin/sdkman-init.sh"
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
