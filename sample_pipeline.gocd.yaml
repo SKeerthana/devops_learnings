@@ -1,0 +1,8 @@
+pipelines:
+  devops:
+     group: Build-Master
+  materials:
+    mygit:
+      git: https://github.com/SKeerthana/devops_learnings/
+      branch: master
+  template: test-template 
