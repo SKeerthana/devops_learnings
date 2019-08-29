@@ -15,3 +15,7 @@
 4. Verify installation
 
 	`ansible --version`
+
+5. Command to create role structure in ansible
+
+	`ansible-galaxy init -v <rolename>`
