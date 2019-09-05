@@ -29,3 +29,18 @@ Reasons why node could go to NotReady state and fix:
     6. Check for API server logs 
 
     Fix: ELB issue but should not happen after 1.2 kubernetes
+
+3. 	The below flags could be used to set memory/CPU limits on the node
+	--kube-reserved             <- kubelet, container runtime, node problem detector
+	--system-reserved           <- system daemons like sshd, udev, etc
+	--eviction-hard             <- kubelet attempts to evict pods whenever memory availability on the node drops
+
+	-> To begin with enforce Allocatable on pods
+	-> Once adequate monitoring and alerting is in place attempt kube-reserved
+	-> If absolutely necessary, enforce system-reserved
+
+	Other node limits that could be used:
+		eviction-soft
+		eviction-soft-grace-period
+		eviction-max-pod-grace-period
+		eviction-hard
