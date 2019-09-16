@@ -1,4 +1,7 @@
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+" install ZSH -> brew install zsh zsh-completions
+" install oh-my-zsh -> sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 export SDKMAN_DIR="/Users/keethas/.sdkman"
 [[ -s "/Users/keethas/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/keethas/.sdkman/bin/sdkman-init.sh"
 fpath=(/usr/local/share/zsh-completions $fpath)
